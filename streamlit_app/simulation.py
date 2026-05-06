@@ -131,6 +131,7 @@ def run_monte_carlo_simulation(
     return timeline, values[:, -1]
 
 
+@st.cache_data
 def run_scenario(
     scenario: ScenarioInput,
     monte_carlo: MonteCarloConfig | None,

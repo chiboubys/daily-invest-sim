@@ -42,6 +42,19 @@ python -m pip install -e .[dev]
 streamlit run streamlit_app/main.py
 ```
 
+## Deploy to Streamlit
+
+Use the production dependency manifest:
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run streamlit_app/main.py --server.headless true
+```
+
+For hosted Streamlit deployment, set the app entrypoint to:
+
+- `streamlit_app/main.py`
+
 ## Quality gates
 
 ```bash

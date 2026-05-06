@@ -13,6 +13,7 @@ streamlit_app/models.py
 streamlit_app/simulation.py
 streamlit_app/state.py
 streamlit_app/visuals.py
+tests/test_analytics.py
 tests/test_properties.py
 tests/test_simulation.py
 tests/test_streamlit_smoke.py

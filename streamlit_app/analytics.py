@@ -4,11 +4,13 @@ import math
 from collections.abc import Iterable
 
 import polars as pl
+import streamlit as st
 
 from .models import AppConfig, ScenarioInput, ScenarioSummary
 from .simulation import SimulationArtifacts
 
 
+@st.cache_data
 def build_summary(
     scenario: ScenarioInput,
     artifacts: SimulationArtifacts,
@@ -35,6 +37,7 @@ def build_summary(
     )
 
 
+@st.cache_data
 def summarize_all(
     scenarios: Iterable[ScenarioInput],
     artifacts_by_name: dict[str, SimulationArtifacts],
@@ -52,6 +55,7 @@ def summarize_all(
     return frame.sort("final_value", descending=True)
 
 
+@st.cache_data
 def make_comparison_timeline(
     scenarios: Iterable[ScenarioInput],
     artifacts_by_name: dict[str, SimulationArtifacts],
