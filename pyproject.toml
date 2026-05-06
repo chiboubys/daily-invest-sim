@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "investment-simulator-dashboard"
+version = "0.1.0"
+description = "Enterprise-grade investment simulation dashboard"
+readme = "README.md"
+requires-python = ">=3.14"
+license = { text = "Proprietary" }
+authors = [
+  { name = "Dataviz Team" }
+]
+dependencies = [
+  "streamlit>=1.45.0",
+  "pandas>=2.3.0",
+  "polars>=1.30.0",
+  "numpy>=2.3.0",
+  "plotly>=6.0.0",
+  "pydantic>=2.11.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-cov>=6.0.0",
+  "hypothesis>=6.130.0",
+  "mypy>=1.15.0",
+  "pandas-stubs>=2.3.0.250703",
+  "ruff>=0.11.0",
+  "bandit>=1.8.0",
+  "pip-audit>=2.8.0",
+  "streamlit>=1.45.0",
+]
+
+[tool.setuptools]
+packages = ["streamlit_app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "--strict-markers --disable-warnings --cov=streamlit_app --cov-report=term-missing --ignore=tests/test_streamlit_smoke.py"
+markers = [
+  "streamlit_smoke: streamlit integration smoke tests",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["streamlit_app"]
+omit = [
+  "tests/*",
+  "streamlit_app/main.py",
+  "streamlit_app/state.py",
+  "streamlit_app/visuals.py",
+]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "C4", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+no_implicit_optional = true
+show_error_codes = true
+pretty = true
+
+[[tool.mypy.overrides]]
+module = ["plotly", "plotly.*"]
+ignore_missing_imports = true
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B311"]

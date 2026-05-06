@@ -1,0 +1,13 @@
+[server]
+headless = true
+runOnSave = true
+
+[runner]
+fastReruns = true
+
+[theme]
+primaryColor = "#007A64"
+backgroundColor = "#F7F8F5"
+secondaryBackgroundColor = "#EAEDE6"
+textColor = "#1A1D18"
+font = "sans serif"

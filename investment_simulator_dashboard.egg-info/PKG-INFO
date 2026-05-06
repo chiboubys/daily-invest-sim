@@ -1,0 +1,54 @@
+Metadata-Version: 2.4
+Name: investment-simulator-dashboard
+Version: 0.1.0
+Summary: Enterprise-grade investment simulation dashboard
+Author: Dataviz Team
+License: Proprietary
+Requires-Python: >=3.14
+Description-Content-Type: text/markdown
+Requires-Dist: streamlit>=1.45.0
+Requires-Dist: pandas>=2.3.0
+Requires-Dist: polars>=1.30.0
+Requires-Dist: numpy>=2.3.0
+Requires-Dist: plotly>=6.0.0
+Requires-Dist: pydantic>=2.11.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Requires-Dist: pytest-cov>=6.0.0; extra == "dev"
+Requires-Dist: hypothesis>=6.130.0; extra == "dev"
+Requires-Dist: mypy>=1.15.0; extra == "dev"
+Requires-Dist: pandas-stubs>=2.3.0.250703; extra == "dev"
+Requires-Dist: ruff>=0.11.0; extra == "dev"
+Requires-Dist: bandit>=1.8.0; extra == "dev"
+Requires-Dist: pip-audit>=2.8.0; extra == "dev"
+Requires-Dist: streamlit>=1.45.0; extra == "dev"
+
+# Investment Simulator Backend
+
+This backend hosts a Streamlit dashboard for deterministic and Monte Carlo investment simulations.
+
+## Prerequisites
+
+- Python 3.14
+- pip
+
+## Quick start
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install -e .[dev]
+streamlit run streamlit_app/main.py
+```
+
+## Quality gates
+
+```bash
+ruff check .
+ruff format --check .
+mypy streamlit_app
+pytest
+bandit -r streamlit_app
+pip-audit
+```
